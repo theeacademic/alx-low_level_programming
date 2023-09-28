@@ -3,7 +3,7 @@
 
 /**
  * main - check the code
- *
+ *is_palindrome - Checks if a string is a palindrome.
  * Return: Always 0.
  */
 int main(void)
