@@ -6,13 +6,26 @@
  */
 void print_binary(unsigned long int n)
 {
-    int numBits = sizeof(n) * 8;
     int i;
+    int flag = 0;
 
-    for (i = numBits - 1; i >= 0; i--)
+    if (n == 0)
     {
-        unsigned long int mask = 1UL << i;
-        putchar((n & mask) ? '1' : '0');
+        putchar('0');
+        return;
+    }
+
+    for (i = (sizeof(n) * 8) - 1; i >= 0; i--)
+    {
+        if (n & (1UL << i))
+        {
+            flag = 1;
+            putchar('1');
+        }
+        else if (flag)
+        {
+            putchar('0');
+        }
     }
 
     putchar('\n');
