@@ -1,0 +1,34 @@
+# Makefile for building the 'school' executable
+
+# Compiler settings
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+# Source files (add your source files here)
+SRCS = main.c utils.c
+
+# Object files (automatically generated from source files)
+OBJS = $(SRCS:.c=.o)
+
+# Target executable
+TARGET = school
+
+# Default rule: build the executable
+all: $(TARGET)
+
+# Compile source files into object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Link object files to create the executable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+# Clean up intermediate files
+clean:
+	rm -f $(OBJS)
+
+# Clean up all generated files
+distclean: clean
+	rm -f $(TARGET)
+
