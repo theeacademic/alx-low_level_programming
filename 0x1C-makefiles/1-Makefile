@@ -1,0 +1,22 @@
+# Makefile for building the 'school' executable
+
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+SRC = main.c school.c
+OBJS = $(SRC:.c=.o)
+TARGET = school
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
